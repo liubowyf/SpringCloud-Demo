@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: demo-service
+  #集成nacos配置中心相关配置
+  #nacos地址配置
+  cloud:
+    nacos:
+      config:
+        server-addr: 192.168.199.21:8848
+        file-extension: yaml

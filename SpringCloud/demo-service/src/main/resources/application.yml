@@ -1,0 +1,7 @@
+#server:
+#  port: 9091
+#spring:
+#  cloud:
+#    nacos:
+#      discovery:
+#        server-addr: 192.168.199.21:8848
