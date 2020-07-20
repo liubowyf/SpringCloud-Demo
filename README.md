@@ -61,4 +61,4 @@
     db.user=root
     db.password=123456
 ```
-![CINQa.png](https://wx2.sbimg.cn/2020/07/20/CINQa.png)
+[![CINQa.png](https://wx2.sbimg.cn/2020/07/20/CINQa.png)](https://sbimg.cn/image/CINQa)
