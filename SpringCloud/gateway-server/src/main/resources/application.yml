@@ -2,39 +2,31 @@
 ####  dataID为spring.application.name 如果涉及多环境可以配置spring.profiles.active
 ####  此时dataID为{spring.application.name}-{spring.profiles.active}.{配置文件格式}
 #server:
-#  port: 8080
+#  port: 9090
 #spring:
 #  cloud:
+#    sentinel:
+#      filter:
+#        enabled: false
+#      transport:
+#        dashboard: 10.128.90.4:8080
+#        port: 8719
+#      eager: true
 #    nacos:
 #      discovery:
-#        server-addr: 192.168.199.21:8848
+#        server-addr: 10.128.90.4:8848
 #    gateway:
 #      routes:
 #        - id: demo-service
 #          uri: lb://demo-service
 #          predicates:
 #            - Path=/demo-service/**
-#          filters:
-#            - name: RequestRateLimiter
-#              args:
-#                #令牌桶每秒填充平均速度
-#                redis-rate-limiter.replenishRate: 1
-#                #令牌桶上限
-#                redis-rate-limiter.burstCapacity: 1
-#                #使用SpEL表达式从Spring容器中获取限流对象
-#                key-resolver: "#{@ipLimit}"
-#            #- AddResponseHeader=X-Response-Default-Foo，Default-Bar
 #        #gateway开启服务注册和发现的功能，并且spring cloud gateway自动根据服务发现为每一个服务创建了一个router，
 #        #这个router将以服务名开头的请求路径转发到对应的服务
 #      discovery:
 #        locator:
 #          enabled: true
-#  #redis相关配置（限流使用）
-#  redis:
-#    host: 192.168.199.21
-#    port: 6379
-#    database: 0
-#    password: 123456
+#
 #
 #logging:
 #  level:
