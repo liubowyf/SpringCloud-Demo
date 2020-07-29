@@ -1,6 +1,5 @@
 package com.liubo.gatewayserver.controller;
 
-import com.alibaba.csp.sentinel.annotation.SentinelResource;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -17,9 +16,15 @@ import java.util.Date;
 @RequestMapping("/impl")
 public class testCOntroller {
 	@RequestMapping("/time")
-	@SentinelResource("/api")
 	public String getTime(){
 		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		return df.format(new Date());
 	}
+
+	@RequestMapping("/hello")
+	public String hello(){
+
+		return "hello";
+	}
+
 }

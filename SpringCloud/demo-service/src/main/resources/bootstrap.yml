@@ -8,3 +8,6 @@ spring:
       config:
         server-addr: 10.128.90.4:8848
         file-extension: yaml
+server:
+  servlet:
+    context-path: /demo-service
