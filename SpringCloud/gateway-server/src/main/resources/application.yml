@@ -3,6 +3,9 @@ spring:
     host: 10.128.90.4
     port: 6379
   cloud:
+    nacos:
+      discovery:
+        server-addr: 10.128.90.4:8848
     gateway:
       enabled: true
       discovery:
@@ -10,10 +13,11 @@ spring:
           enabled: true
       routes:
         - id: limit_route
-          uri: http://localhost:9091
+          uri: lb://demo-service
           predicates:
-            - Path=/demo-service/**
+            - Path=/**
           filters:
+            - StripPrefix=1
             - name: RequestRateLimiter
               args:
                 key-resolver: "#{@ipKeyResolver}"
