@@ -1,0 +1,12 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: demo-service
+  cloud:
+    nacos:
+      config:
+        server-addr: 10.128.90.4:8848
+        group: alibaba
+        file-extension: yaml
+
