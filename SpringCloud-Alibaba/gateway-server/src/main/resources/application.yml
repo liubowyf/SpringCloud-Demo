@@ -15,11 +15,41 @@ spring:
         - id: limit_route
           uri: lb://demo-service
           predicates:
-            - Path=/**
+            - Path=/demo-service/**
+          #Gateway基于Redis的原生限流配置
           filters:
             - StripPrefix=1
-            - name: RequestRateLimiter
-              args:
-                key-resolver: "#{@ipKeyResolver}"
-                redis-rate-limiter.replenishRate: 1
-                redis-rate-limiter.burstCapacity: 3
+    #            - name: RequestRateLimiter
+    #              args:
+    #                key-resolver: "#{@ipKeyResolver}"
+    #                redis-rate-limiter.replenishRate: 1
+    #                redis-rate-limiter.burstCapacity: 3
+
+    sentinel:
+      transport:
+        # 指定sentinel控制台地址
+        dashboard: 10.128.90.4:8080
+        # 指定和控制台通信的IP，若不配置，会自动选择一个IP注册
+        client-ip: 10.128.90.2
+        # 指定和控制台通信的端口哦，默认值8719
+        # 若不配置，会自动扫猫从8719开始扫猫，依次+1，知道值找到未被占用的端口
+        port: 8719
+        # 心跳发送周期，默认值null
+        # 但在SimpleHttpHeartbeatSender会用默认值10秒
+        heartbeat-interval-ms: 10000
+      datasource:
+        ds:
+          nacos:
+            server-addr: 10.128.90.4:8848
+            dataId: ${spring.application.name}-sentinel
+            groupId: alibaba
+            rule-type: flow
+feign:
+  sentinel:
+    enabled: true
+management:
+  # 端点检查（健康检查）
+  endpoints:
+    web:
+      exposure:
+        include: "*"
