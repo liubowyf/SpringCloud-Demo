@@ -7,3 +7,6 @@ SpringCloud/gateway-server/src/main/java/com/liubo/gatewayserver/.DS_Store
 SpringCloud-Alibaba/demo-service/mvnw
 SpringCloud-Alibaba/demo-service/mvnw.cmd
 maven-wrapper.jar
+SpringCloud-Alibaba/gateway-server/mvnw
+SpringCloud-Alibaba/gateway-server/mvnw.cmd
+mvnw

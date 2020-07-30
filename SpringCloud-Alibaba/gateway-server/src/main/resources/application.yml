@@ -1,0 +1,25 @@
+spring:
+  redis:
+    host: 10.128.90.4
+    port: 6379
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 10.128.90.4:8848
+    gateway:
+      enabled: true
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: limit_route
+          uri: lb://demo-service
+          predicates:
+            - Path=/**
+          filters:
+            - StripPrefix=1
+            - name: RequestRateLimiter
+              args:
+                key-resolver: "#{@ipKeyResolver}"
+                redis-rate-limiter.replenishRate: 1
+                redis-rate-limiter.burstCapacity: 3
