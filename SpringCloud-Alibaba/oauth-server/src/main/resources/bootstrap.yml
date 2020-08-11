@@ -1,13 +1,12 @@
 server:
-  port: 8081
+  port: 9091
 spring:
   application:
-    name: demo-service
+    name: oauth-server
   cloud:
     nacos:
       config:
         server-addr: 10.128.90.5:8848
         group: alibaba
         file-extension: yaml
-        timeout: 3000
-
+        timeout: 30000

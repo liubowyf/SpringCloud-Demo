@@ -1,0 +1,19 @@
+#spring:
+#  application:
+#    name: micro-oauth2-auth
+#  cloud:
+#    nacos:
+#      discovery:
+#        server-addr: 10.128.90.5:8848
+#  jackson:
+#    date-format: yyyy-MM-dd HH:mm:ss
+#  redis:
+#    database: 0
+#    port: 6379
+#    host: 10.128.90.5
+#    password: 123456
+#management:
+#  endpoints:
+#    web:
+#      exposure:
+#        include: "*"
