@@ -1,11 +1,11 @@
 spring:
   redis:
-    host: 10.128.90.4
+    host: 10.128.90.6
     port: 6379
   cloud:
     nacos:
       discovery:
-        server-addr: 10.128.90.4:8848
+        server-addr: 10.128.90.6:8848
     gateway:
       enabled: true
       discovery:
@@ -28,7 +28,7 @@ spring:
     sentinel:
       transport:
         # 指定sentinel控制台地址
-        dashboard: 10.128.90.4:8080
+        dashboard: 10.128.90.6:8080
         # 指定和控制台通信的IP，若不配置，会自动选择一个IP注册
         client-ip: 10.128.90.2
         # 指定和控制台通信的端口哦，默认值8719
@@ -40,7 +40,7 @@ spring:
       datasource:
         ds:
           nacos:
-            server-addr: 10.128.90.4:8848
+            server-addr: 10.128.90.6:8848
             dataId: ${spring.application.name}-sentinel
             groupId: alibaba
             rule-type: flow
